@@ -3,6 +3,7 @@ package core;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.Locale;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -65,10 +66,14 @@ public class Calculator extends JFrame {
         left.add(new ButtonEqual(this));
         root.add(left, BorderLayout.LINE_START);
 
+        // button back
+        // button clear
         ButtonAdd buttonAdd = new ButtonAdd(this);
         ButtonSubstract buttonSubtract = new ButtonSubstract(this);
         ButtonMultiply buttonMultiply = new ButtonMultiply(this);
         ButtonDivide buttonDivide = new ButtonDivide(this);
+        // power
+        // sqrt
         right.add(buttonAdd);
         right.add(buttonSubtract);
         right.add(buttonMultiply);
@@ -85,10 +90,6 @@ public class Calculator extends JFrame {
 
     public boolean isReset() {
         return reset;
-    }
-
-    public void refresh() {
-
     }
 
     public void setReset(boolean reset) {
@@ -117,6 +118,14 @@ public class Calculator extends JFrame {
         Calculator test = new Calculator();
         test.setVisible(true);
 
+    }
+
+    public void updateTextArea() {
+        String textArea = display.getText();
+        Double result = command.execute(memory, Double.valueOf(textArea));
+
+        display.setText(String.format(Locale.US, "%.2f", result));
+        reset = true;
     }
 
 }

@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import javax.swing.JTextArea;
 
+import command.CommandAdd;
 import core.Calculator;
 
 public class ButtonEqual extends Button {
@@ -15,15 +16,11 @@ public class ButtonEqual extends Button {
 
     @Override
     public void click() {
-        JTextArea display = calculator.getDisplay();
 
-        String textArea = display.getText();
-        Double result = calculator.getCommand().execute(calculator.getMemory(), Double.valueOf(textArea));
-
-        display.setText(String.format(Locale.US, "%.2f", result));
-
-        calculator.setReset(true);
-        calculator.setMemory(Double.valueOf(display.getText()));
+        calculator.updateTextArea();
+        
+        calculator.setCommand(new CommandAdd());
+        calculator.setMemory(0);
 
     }
 

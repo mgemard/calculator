@@ -16,24 +16,11 @@ public class ButtonAdd extends Button {
 
     @Override
     public void click() {
-        JTextArea display = calculator.getDisplay();
+
+        calculator.updateTextArea();
         
-
-
-        String textArea = display.getText();
-        Double result = calculator.getCommand().execute(calculator.getMemory(), Double.valueOf(textArea));
-
-        display.setText(String.format(Locale.US, "%.2f", result));
-
-        calculator.setReset(true);
-        calculator.setMemory(Double.valueOf(display.getText()));
-        
-        
-        
-
+        calculator.setMemory(Double.valueOf(calculator.getDisplay().getText()));
         calculator.setCommand(new CommandAdd());
-        
-        
     }
 
 }

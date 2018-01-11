@@ -1,7 +1,6 @@
 package button;
 
-import javax.swing.JTextArea;
-
+import command.CommandMultiply;
 import core.Calculator;
 
 public class ButtonMultiply extends Button {
@@ -13,8 +12,10 @@ public class ButtonMultiply extends Button {
 
     @Override
     public void click() {
-        JTextArea display = calculator.getDisplay();
-        display.setText(display.getText() + "*");
+        calculator.updateTextArea();
+
+        calculator.setMemory(Double.valueOf(calculator.getDisplay().getText()));
+        calculator.setCommand(new CommandMultiply());
     }
 
 }

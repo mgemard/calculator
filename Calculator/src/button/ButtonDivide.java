@@ -1,7 +1,6 @@
 package button;
 
-import javax.swing.JTextArea;
-
+import command.CommandDivide;
 import core.Calculator;
 
 public class ButtonDivide extends Button {
@@ -13,8 +12,10 @@ public class ButtonDivide extends Button {
 
     @Override
     public void click() {
-        JTextArea display = calculator.getDisplay();
-        display.setText(display.getText() + "/");
+        calculator.updateTextArea();
+        
+        calculator.setMemory(Double.valueOf(calculator.getDisplay().getText()));
+        calculator.setCommand(new CommandDivide());
     }
 
 }
