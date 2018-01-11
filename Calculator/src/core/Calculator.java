@@ -15,6 +15,7 @@ import button.ButtonDivide;
 import button.ButtonEqual;
 import button.ButtonMultiply;
 import button.ButtonNumber;
+import button.ButtonPower;
 import button.ButtonSubstract;
 import command.Command;
 import command.CommandAdd;
@@ -48,7 +49,7 @@ public class Calculator extends JFrame {
         getContentPane().add(left, BorderLayout.LINE_START);
         getContentPane().add(right, BorderLayout.LINE_END);
 
-        display = new JTextArea();
+        display = new JTextArea("0");
         display.setPreferredSize(new Dimension(200, 40));
         root.add(display, BorderLayout.PAGE_START);
 
@@ -66,18 +67,19 @@ public class Calculator extends JFrame {
         left.add(new ButtonEqual(this));
         root.add(left, BorderLayout.LINE_START);
 
-        // button back
-        // button clear
+        // TODO button back
+        // TODO button clear
         ButtonAdd buttonAdd = new ButtonAdd(this);
         ButtonSubstract buttonSubtract = new ButtonSubstract(this);
         ButtonMultiply buttonMultiply = new ButtonMultiply(this);
         ButtonDivide buttonDivide = new ButtonDivide(this);
-        // power
+        ButtonPower buttonPower = new ButtonPower(this);
         // sqrt
         right.add(buttonAdd);
         right.add(buttonSubtract);
         right.add(buttonMultiply);
         right.add(buttonDivide);
+        right.add(buttonPower);
 
         root.add(right, BorderLayout.CENTER);
 
